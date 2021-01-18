@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PageHistoryComponent } from './presentation/pages/page-history/page-history.component';
+import { HistoriesRoutingModule } from './histories-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PageHistoryComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    HistoriesRoutingModule,
+    SharedModule
   ]
 })
 export class HistoriesModule { }

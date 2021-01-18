@@ -7,10 +7,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MenuComponent } from './presentation/views/menu/menu.component';
+import {MatListModule} from '@angular/material/list';
+import { PageLoginComponent } from './presentation/pages/page-login/page-login.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, MenuComponent, PageLoginComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -18,10 +22,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
     MatIconModule,
     MatMenuModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatListModule,
+    RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    MenuComponent,
+    PageLoginComponent,
+    RouterModule
   ]
 })
 export class CoreModule { }

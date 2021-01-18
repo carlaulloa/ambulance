@@ -4,13 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { MedicOperationRepository } from './application/medic-operation.repository';
 import { MedicOperation } from './infraestructure/medic.operation';
 import { MedicUsecase } from './application/medic.usercase';
-import { MedicsComponent } from './presentation/pages/medics/medics.component';
+import { PageMedicsComponent } from './presentation/pages/page-medics/page-medics.component';
+import { MedicsRoutingModule } from './medics-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [MedicsComponent],
+  declarations: [PageMedicsComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    MedicsRoutingModule,
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     MedicUsecase,
@@ -19,6 +23,6 @@ import { MedicsComponent } from './presentation/pages/medics/medics.component';
       useClass: MedicOperation
     }
   ],
-  exports: [MedicsComponent]
+  exports: []
 })
 export class MedicsModule { }
