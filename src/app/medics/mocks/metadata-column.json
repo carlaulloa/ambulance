@@ -1,0 +1,16 @@
+[{
+  "field": "id",
+  "title": "ID"
+}, {
+  "field": "name",
+  "title": "Nombre"
+}, {
+  "field": "lastName",
+  "title": "2Apellido"
+}, {
+  "field": "cmp",
+  "title": "CMP"
+}, {
+  "field": "dni",
+  "title": "Documento de Identidad"
+}]

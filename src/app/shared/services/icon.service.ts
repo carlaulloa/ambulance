@@ -24,7 +24,7 @@ export class IconService {
     { name: 'reporte', path: '../assets/icons/reporte.svg' },
     { name: 'tarifa', path: '../assets/icons/tarifa.svg' },
     { name: 'tablero', path: '../assets/icons/tablero.svg' },
-    { name: 'monitoreo', path: '../assets/icons/monitoreo.svg' },
+    { name: 'monitoreo', path: '../assets/icons/monitoreo.svg' }
   ];
 
   constructor(private readonly matIconRegistry: MatIconRegistry,

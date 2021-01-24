@@ -1,0 +1,7 @@
+<div class="photo" ambUpload 
+(onHover)="isOver = $event" 
+(onUploadFile)="loadImage($event)"
+[ngClass]="{ hover: isOver }"
+#photo>
+  Arrastrar imagen
+</div>

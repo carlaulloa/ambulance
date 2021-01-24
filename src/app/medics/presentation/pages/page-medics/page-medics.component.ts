@@ -1,48 +1,31 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { MedicEntity } from 'src/app/medics/domain/medic.entity';
 import { IMetadataColumn } from 'src/app/shared/interfaces/metadata-column.interface';
-
+import { UtilsService } from 'src/app/shared/services/utils.service';
+import { FormMedicComponent } from '../../views/form-medic/form-medic.component';
+import mockMedics from '../../../mocks/medics.json'; 
+import metadataColumn from '../../../mocks/metadata-column.json';
 @Component({
   selector: 'amb-page-medics',
   templateUrl: './page-medics.component.html',
   styleUrls: ['./page-medics.component.css']
 })
 export class PageMedicsComponent implements OnInit {
-  metadataColumns: IMetadataColumn[] = [{
-    field: 'id',
-    title: 'ID'
-  }, {
-    field: 'name',
-    title: 'Nombre'
-  }, {
-    field: 'lastName',
-    title: 'Apellido'
-  }, {
-    field: 'cmp',
-    title: 'CMP'
-  }, {
-    field: 'dni',
-    title: "Documento de Identidad"
-  }];
-  data: any[] = [
-    {
-      id: 1, name: "alterto", lastName: "vega", cmp: "45625", dni: "78652416"
-    },
-    {
-      id: 2, name: "alterto", lastName: "vega", cmp: "45625", dni: "78652416"
-    },
-    {
-      id: 3, name: "alterto", lastName: "vega", cmp: "45625", dni: "78652416"
-    },{
-      id: 4, name: "alterto", lastName: "vega", cmp: "45625", dni: "78652416"
-    },
-    {
-      id: 5, name: "alterto", lastName: "vega", cmp: "45625", dni: "78652416"
-
-    }
-  ];
-  constructor() { }
+  metadataColumns: IMetadataColumn[] = metadataColumn;
+  data: MedicEntity[] = mockMedics;
+  constructor(
+    private readonly utilsService: UtilsService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openForm(row: MedicEntity | any = null) {
+    this.utilsService.openModal(FormMedicComponent, {
+      disableClose: true, // agregar un boton para cerrar
+      panelClass: "container-modal", // 
+      data: row
+    });
   }
 
 }

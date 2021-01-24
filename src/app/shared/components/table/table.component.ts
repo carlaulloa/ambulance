@@ -29,7 +29,6 @@ export class TableComponent implements OnInit, AfterContentInit {
    * Esto se ejecuta cuando todo el content ha cargado
    */
   ngAfterContentInit(){
-    console.log(this.columnsDef)
     if(!this.columnsDef) return;
     this.columnsDef.forEach((columnDef) => this.table?.addColumnDef(columnDef));
     if(this.columnsDef.length){

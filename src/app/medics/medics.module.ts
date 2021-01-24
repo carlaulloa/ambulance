@@ -7,9 +7,10 @@ import { MedicUsecase } from './application/medic.usercase';
 import { PageMedicsComponent } from './presentation/pages/page-medics/page-medics.component';
 import { MedicsRoutingModule } from './medics-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormMedicComponent } from './presentation/views/form-medic/form-medic.component';
 
 @NgModule({
-  declarations: [PageMedicsComponent],
+  declarations: [PageMedicsComponent, FormMedicComponent],
   imports: [
     CommonModule,
     MedicsRoutingModule,

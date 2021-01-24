@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "name": "alberto",
+    "surname": "vega",
+    "lastname": "jose",
+    "cmp": "45625",
+    "photo": "alberto.jpg",
+    "isActive": true,
+    "email": "alberto@gmail.com"
+  },
+  {
+    "id": 2,
+    "name": "alberto",
+    "surname": "vega",
+    "lastname": "jose",
+    "cmp": "45625",
+    "photo": "alberto.jpg",
+    "isActive": true
+  },
+  {
+    "id": 3,
+    "name": "alberto",
+    "surname": "vega",
+    "lastname": "jose",
+    "cmp": "45625",
+    "photo": "alberto.jpg",
+    "isActive": true
+  },
+  {
+    "id": 4,
+    "name": "alberto",
+    "surname": "vega",
+    "lastname": "jose",
+    "cmp": "45625",
+    "photo": "alberto.jpg",
+    "isActive": true
+  },
+  {
+    "id": 5,
+    "name": "alberto",
+    "surname": "vega",
+    "lastname": "jose",
+    "cmp": "45625",
+    "photo": "alberto.jpg",
+    "isActive": true
+  }
+]
