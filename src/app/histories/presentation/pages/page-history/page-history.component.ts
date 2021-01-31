@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/config/config.service';
 import { IMetadataColumn } from 'src/app/shared/interfaces/metadata-column.interface';
 
 @Component({
@@ -30,7 +31,18 @@ export class PageHistoryComponent implements OnInit {
       id: 5, name: "alterto"
     }
   ];
-  constructor() { }
+  constructor(private readonly configService: ConfigService) { 
+    this.configService.config = {
+      layout: {
+        menu: {
+          hidden: false
+        },
+        header: {
+          hidden: false
+        }
+      }
+    }
+  }
 
   ngOnInit(): void {
   }

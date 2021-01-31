@@ -12,11 +12,16 @@ import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
+import { WebcamModule } from 'ngx-webcam';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 
 /*
@@ -32,7 +37,10 @@ para que pueda ser usado por otros
     MatCardModule,
     FlexLayoutModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    WebcamModule,
+    MatSlideToggleModule,
+    MatPaginatorModule
   ],
   exports: [
     MatSidenavModule,
@@ -49,7 +57,8 @@ para que pueda ser usado por otros
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    PhotoComponent
+    PhotoComponent,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

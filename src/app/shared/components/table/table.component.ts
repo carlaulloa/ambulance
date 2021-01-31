@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 import { MatColumnDef, MatTable, MatTableDataSource } from '@angular/material/table';
 import { IMetadataColumn } from '../../interfaces/metadata-column.interface';
 
@@ -10,6 +10,8 @@ import { IMetadataColumn } from '../../interfaces/metadata-column.interface';
 export class TableComponent implements OnInit, AfterContentInit {
   @Input() data: any;
   @Input() metadataColumns: IMetadataColumn[] = [];
+  @Input() total: number = 0;
+  @Output() onChangePage: EventEmitter<number> = new EventEmitter<number>();
   // va a seleccionar el primero , si tengo varios uso viewchildren 
   @ViewChild(MatTable, { static: true }) table: MatTable<any> | undefined;
   // lo que no forma parte del view se llama content
@@ -38,5 +40,9 @@ export class TableComponent implements OnInit, AfterContentInit {
 
   loadData(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
+  }
+
+  handlerPage(evt: any){
+    this.onChangePage.emit(evt.pageIndex);
   }
 }

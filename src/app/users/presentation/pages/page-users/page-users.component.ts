@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/config/config.service';
 import { IMetadataColumn } from 'src/app/shared/interfaces/metadata-column.interface';
 
 @Component({
@@ -33,7 +34,19 @@ export class PageUsersComponent implements OnInit {
       id: 5, fullname: "Alberto Vega", license: "456225452"
     }
   ];
-  constructor() { }
+  
+  constructor(private readonly configService: ConfigService) { 
+    this.configService.config = {
+      layout: {
+        menu: {
+          hidden: false
+        },
+        header: {
+          hidden: false
+        }
+      }
+    }
+  }
 
   ngOnInit(): void {
   }

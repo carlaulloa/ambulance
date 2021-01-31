@@ -9,6 +9,10 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { IconService } from './shared/services/icon.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { Paginator } from './shared/classes/paginator';
+import { ConfigModule } from './config/config.module';
+import { AMB_CONFIG } from './config/info';
 
 
 @NgModule({
@@ -21,9 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ConfigModule.forRoot(AMB_CONFIG)
   ],
-  providers: [],
+  providers: [{
+    provide: MatPaginatorIntl, useClass: Paginator
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

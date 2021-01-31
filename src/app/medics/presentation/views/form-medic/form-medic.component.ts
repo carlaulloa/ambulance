@@ -16,6 +16,7 @@ import { MedicEntity } from 'src/app/medics/domain/medic.entity';
 export class FormMedicComponent implements OnInit {
   title: string;
   group: FormGroup = new FormGroup({});
+  photoToShow: string = 'photo.jpg';
 
   // mat_dialog_data json que contiene el registro que se envia
   constructor(@Inject(MAT_DIALOG_DATA) private data: MedicEntity | any) { 
@@ -51,8 +52,15 @@ export class FormMedicComponent implements OnInit {
       ]),
       lastname: new FormControl(this.data ? this.data.lastname : null),
       dni: new FormControl(this.data ? this.data.dni : null, Validators.required),
-      cmp: new FormControl(this.data ? this.data.cmp : null, Validators.required),
+      cmp: new FormControl(this.data ? this.data.cmp : null, Validators.required)
     });
+
+    if(this.data){
+      this.group.addControl('photo', new FormControl(null));
+      this.photoToShow = this.data.photo;
+    } else {
+      this.group.addControl('photo', new FormControl(null, Validators.required));
+    }
   }
 
   save(){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/config/config.service';
 
 @Component({
   selector: 'amb-page-dashboard',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly configService: ConfigService) { 
+    this.configService.config = {
+      layout: {
+        menu: {
+          hidden: false
+        },
+        header: {
+          hidden: false
+        }
+      }
+    }
+  }
 
   ngOnInit(): void {
   }

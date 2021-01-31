@@ -8,7 +8,7 @@
   <form fxLayour="column" [formGroup]="group">
     <div fxLayout fxLayoutAlign="space-between" fcLayoutGap="10px">
       <div fxFlex="1 1 33%">
-        <amb-photo></amb-photo>
+        <amb-photo formControlName="photo" [photoByDefault]="photoToShow"></amb-photo>
       </div>
       <div fxFlex="1 1 33%" fxLayout="column">
         <mat-form-field appearance="outline">
@@ -29,8 +29,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Correo</mat-label>
           <input type="text" matInput formControlName="email" required>
-          <mat-error *ngIf="group.get('email').hasError('required')">El campo es obligatorio</mat-error>
-          <mat-error *ngIf="group.get('email').hasError('email')">Debe ser un correo</mat-error>
+          <mat-error *ngIf="group?.get('email')?.hasError('required')">El campo es obligatorio</mat-error>
+          <mat-error *ngIf="group?.get('email')?.hasError('email')">Debe ser un correo</mat-error> 
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>CMP</mat-label>
