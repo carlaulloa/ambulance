@@ -1,26 +1,37 @@
-<div class="container" fxLayout fxLayoutAlign="center center">
-  <mat-card fxLayout="column" fxLayoutGap="20px" fxFlex="1 1 420px">
+<div class="container"
+     fxLayout
+     fxLayoutAlign="center center">
+  <mat-card fxLayout="column"
+            fxLayoutGap="20px"
+            fxFlex="1 1 420px">
     <div class="avatar">
-      <img src="/assets/img/avatar.jpg" alt="">
-      <mat-icon>lock</mat-icon> 
+      <img src="/assets/img/avatar.jpg"
+           alt="">
+      <mat-icon>lock</mat-icon>
     </div>
     <div>
       <p>Tu sesión ha sido bloqueada.</p>
       <span>Ingrese su contraseña para continuar.</span>
     </div>
-    <!--<form>
+    <form [formGroup]="form" fxLayout="column">
       <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input type="password" matInput>
+        <input type="password"
+               formControlName="password"
+               matInput>
         <mat-icon matSuffix>vpn_key</mat-icon>
       </mat-form-field>
-      <div fxLayout fxLayoutAlign="center">
-        <button type="button" mat-flat-button color="primary" (click)="onload()">
+      <div fxLayout
+           fxLayoutAlign="center">
+        <button type="button"
+                mat-flat-button
+                color="primary"
+                (click)="onload()">
           DESBLOQUEAR</button>
       </div>
       <div class="center">
         <a routerLink="/auth">¿No eres.. ?</a>
       </div>
-    </form>-->
+    </form>
   </mat-card>
 </div>

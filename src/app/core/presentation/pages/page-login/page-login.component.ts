@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfigService } from 'src/app/config/config.service';
 
@@ -8,6 +9,8 @@ import { ConfigService } from 'src/app/config/config.service';
   styleUrls: ['./page-login.component.css']
 })
 export class PageLoginComponent implements OnInit {
+
+  form: FormGroup = new FormGroup({});
 
   constructor(private readonly configService: ConfigService,
     private readonly router: Router) { 
@@ -24,6 +27,10 @@ export class PageLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      'email' : new FormControl(),
+      'password': new FormControl()
+    });
   }
 
   enter(){

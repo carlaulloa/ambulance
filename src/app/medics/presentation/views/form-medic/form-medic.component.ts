@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MedicEntity } from 'src/app/medics/domain/medic.entity';
+import { CustomValidators } from 'src/app/shared/utils/custom-validators';
 
 @Component({
   selector: 'amb-form-medic',
@@ -45,10 +46,13 @@ export class FormMedicComponent implements OnInit {
       id: new FormControl(this.data ? this.data.id : null),
       name: new FormControl(this.data ? this.data.name : null, Validators.required),
       surname: new FormControl(this.data ? this.data.surname : null, Validators.required),
-      email: new FormControl(this.data ? this.data.email: null, [Validators.required, 
-        Validators.email
-        //  Validators.pattern()
-        // this.validatorEmail
+      email: new FormControl(this.data ? this.data.email : null, [
+        Validators.required,
+        CustomValidators.validatorEmail,
+        /*Validators.pattern(
+          /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/
+        ),*/
+        //Validators.email,
       ]),
       lastname: new FormControl(this.data ? this.data.lastname : null),
       dni: new FormControl(this.data ? this.data.dni : null, Validators.required),

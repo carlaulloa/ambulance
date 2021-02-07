@@ -12,16 +12,17 @@
   </div>
 
   <div fxLayout fxFlex="1 1 30%" class="login">
-    <!--<form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px"
+      [formGroup]="form">
       <h3>Ingrese credenciales</h3>
       <div fxLayout="column">
         <mat-form-field appearance="outline">
           <mat-label>Correo</mat-label>
-            <input type="text" matInput>
+            <input type="text" formControlName="email" matInput>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Contraseña</mat-label>
-            <input type="password">
+            <input type="password" formControlName="password" matInput>
             <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
       </div>
@@ -29,6 +30,6 @@
         <button type="button" mat-raised-button color="primary"
           (click)="enter()">INGRESAR</button>
       </div> 
-    </form> -->
+    </form> 
   </div>
 </div>
