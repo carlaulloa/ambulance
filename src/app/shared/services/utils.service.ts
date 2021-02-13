@@ -9,6 +9,6 @@ export class UtilsService {
   constructor(private readonly dialog: MatDialog) { }
 
   openModal(classComponent: any, options: {[s:string]: string | boolean | number | object}) {
-    this.dialog.open(classComponent, options);
+    return this.dialog.open(classComponent, options);
   }
 }

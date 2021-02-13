@@ -18,15 +18,18 @@
       <div fxLayout="column">
         <mat-form-field appearance="outline">
           <mat-label>Correo</mat-label>
-            <input type="text" formControlName="email" matInput>
-        </mat-form-field>
+            <input type="text" formControlName="correo" matInput required>
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="form.get('correo')?.hasError('required')">El correo es obligaotorio</mat-error>
+            <mat-error *ngIf="form.get('contrasena')?.hasError('email')">Debe ser un correo.</mat-error>
+          </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Contraseña</mat-label>
-            <input type="password" formControlName="password" matInput>
+            <input type="password" formControlName="contrasena" matInput required>
             <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
       </div>
-      <div fxLayout="column">
+      <div fxLayout="column" class="credenciales">
         <button type="button" mat-raised-button color="primary"
           (click)="enter()">INGRESAR</button>
       </div> 

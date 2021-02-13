@@ -6,4 +6,6 @@ export interface MedicEntity {
   cmp: string,
   photo: string,
   isActive: boolean;
+  dni: string;
+  email: string;
 }

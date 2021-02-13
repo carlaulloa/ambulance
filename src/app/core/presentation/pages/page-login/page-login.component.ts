@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ConfigService } from 'src/app/config/config.service';
+import { UserEntity } from 'src/app/users/domain/user.entity';
 
 @Component({
   selector: 'amb-page-login',
@@ -10,10 +12,11 @@ import { ConfigService } from 'src/app/config/config.service';
 })
 export class PageLoginComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({});
+  form: FormGroup | any;
 
   constructor(private readonly configService: ConfigService,
-    private readonly router: Router) { 
+    private readonly router: Router,
+    private readonly authService: AuthService) {
     this.configService.config = {
       layout: {
         menu: {
@@ -27,14 +30,19 @@ export class PageLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setForm();
+  }
+
+  setForm() {
     this.form = new FormGroup({
-      'email' : new FormControl(),
-      'password': new FormControl()
+      'correo': new FormControl(null, [Validators.required]),
+      'contrasena': new FormControl(null, [Validators.required])
     });
   }
 
-  enter(){
-    this.router.navigate(['/dashboard']);
+  enter() {
+    const user: UserEntity = this.form.value;
+    this.authService.login(user);                                                                                                                                                                                                             
   }
 
 }
