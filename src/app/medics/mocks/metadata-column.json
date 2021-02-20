@@ -5,8 +5,8 @@
   "field": "name",
   "title": "Nombre"
 }, {
-  "field": "lastName",
-  "title": "2Apellido"
+  "field": "lastname",
+  "title": "Apellido"
 }, {
   "field": "cmp",
   "title": "CMP"

@@ -14,20 +14,20 @@ export class MedicOperation extends MedicOperationRepository {
     super();
   }
 
-  insert(medic: MedicEntity): Observable<MedicEntity> {
-    throw new Error("Method not implemented.");
+  insert(fd: FormData): Observable<MedicEntity> {
+    return this.http.post<MedicEntity>(`${environment.pathAPI}/medics/`, fd);
   }
-  update(id: string, medic: MedicEntity): Observable<MedicEntity> {
-    throw new Error("Method not implemented.");
+  update(id: number, fd: FormData): Observable<MedicEntity> {
+    return this.http.put<MedicEntity>(`${environment.pathAPI}/medcis/${id}`, fd);
   }
-  delete(id: string): Observable<MedicEntity> {
-    throw new Error("Method not implemented.");
+  delete(id: number): Observable<MedicEntity> {
+    return this.http.delete<MedicEntity>(`${environment.pathAPI}/medics/${id}`);
   }
   getAll(): Observable<MedicEntity[]> {
     const headers = new HttpHeaders({ autorization: "" });
     return this.http.get<MedicEntity[]>("https://angular03.cursos-dev.com/medics", { headers: headers });
   }
-  getOne(id: string): Observable<MedicEntity> {
+  getOne(id: number): Observable<MedicEntity> {
     throw new Error("Method not implemented.");
   }
 

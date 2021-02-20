@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, forwardRef, Input, OnInit, ViewCh
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 /**
  * el control value accessor requiere un token
@@ -34,7 +35,8 @@ export class PhotoComponent implements OnInit, ControlValueAccessor, AfterViewIn
 
   ngAfterViewInit(): void {
     if(this.photoByDefault){
-      const pathPhoto = "/assets/img/" + this.photoByDefault;
+     // const pathPhoto = "/assets/img/" + this.photoByDefault;
+      const pathPhoto = `${environment.pathAPI}/photos/${this.photoByDefault}`;
       this.loadPhoto(pathPhoto);
     }
   }

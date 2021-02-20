@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MedicEntity } from 'src/app/medics/domain/medic.entity';
 import { CustomValidators } from 'src/app/shared/utils/custom-validators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'amb-form-medic',
@@ -17,7 +18,7 @@ import { CustomValidators } from 'src/app/shared/utils/custom-validators';
 export class FormMedicComponent implements OnInit {
   title: string;
   group: FormGroup = new FormGroup({});
-  photoToShow: string = 'photo.jpg';
+  photoToShow: string = 'medico.jpg';
 
   // mat_dialog_data json que contiene el registro que se envia
   constructor(@Inject(MAT_DIALOG_DATA) private data: MedicEntity | any,
@@ -61,10 +62,23 @@ export class FormMedicComponent implements OnInit {
     });
 
     if(this.data){
-      this.group.addControl('photo', new FormControl(null));
-      this.photoToShow = this.data.photo;
+      const url = `${environment.pathAPI}/photos/${this.data.photo}`;
+      const fileName = this.data.photo;
+
+      fetch(url)
+        .then(async (response) => {
+          const contentType = response.headers.get('Content-type');
+          const blob = await response.blob();
+          const file = new File([blob], fileName)
+          console.log(file)
+          this.group.patchValue({ photo: file });
+        })
+
+        this.group.addControl('photo', new FormControl(null));
+        this.photoToShow = this.data.photo;
+
     } else {
-      this.group.addControl('photo', new FormControl(null/*, Validators.required*/));
+      this.group.addControl('photo', new FormControl(null/*,  Validators.required*/));
     }
   }
 
@@ -72,7 +86,12 @@ export class FormMedicComponent implements OnInit {
     console.log(this.group)
     if(this.group.valid){
       const medic = this.group.getRawValue();
-      this.reference.close(medic);
+      const fd: FormData = new FormData();
+      for(const key in medic){
+        fd.append(key, medic[key]);
+      }
+      console.log(fd);
+      this.reference.close(fd);
     }else {
       console.log("formulario no valido")
     }

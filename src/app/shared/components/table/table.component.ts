@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 import { MatColumnDef, MatTable, MatTableDataSource } from '@angular/material/table';
 import { IMetadataColumn } from '../../interfaces/metadata-column.interface';
 
@@ -7,7 +7,7 @@ import { IMetadataColumn } from '../../interfaces/metadata-column.interface';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit, AfterContentInit {
+export class TableComponent implements OnInit, AfterContentInit, OnChanges {
   @Input() data: any;
   @Input() metadataColumns: IMetadataColumn[] = [];
   @Input() total: number = 0;
@@ -24,6 +24,10 @@ export class TableComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {
     this.listFields = this.metadataColumns.map(el => el.field);
+    this.loadData();
+  }
+
+  ngOnChanges(){
     this.loadData();
   }
 

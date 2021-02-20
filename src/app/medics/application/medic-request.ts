@@ -6,5 +6,6 @@ export interface MedicRequest {
   cmp: string,
   dni: string,
   correo: string,
-  activo: boolean
+  activo: boolean,
+  foto: string
 }

@@ -16,6 +16,7 @@ import { AMB_CONFIG } from './config/info';
 import { AbstractStorage } from './shared/services/abstract-storage';
 import { StorageService } from './shared/services/storage.service';
 import { TokenInterceptor } from './shared/services/token.interceptor';
+import { AuthenticationGuard } from './shared/guards/authentication.guard';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { TokenInterceptor } from './shared/services/token.interceptor';
     CoreModule,
     ConfigModule.forRoot(AMB_CONFIG)
   ],
-  providers: [{
+  providers: [
+  AuthenticationGuard, 
+  {
     provide: MatPaginatorIntl, useClass: Paginator
   }, {
     provide: AbstractStorage, useClass: StorageService  

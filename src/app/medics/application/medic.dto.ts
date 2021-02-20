@@ -14,7 +14,7 @@ export const mapping = (data: MedicRequest | MedicRequest[]): MedicEntity
           dni: el.dni,
           isActive: el.activo,
           email: el.correo,
-          photo: ''
+          photo: el.foto
         } 
       });
       return medics;
@@ -28,7 +28,7 @@ export const mapping = (data: MedicRequest | MedicRequest[]): MedicEntity
         dni: data.dni,
         isActive: data.activo,
         email: data.correo,
-        photo: ''
+        photo: data.foto
       }
       return medicEntity; 
     }

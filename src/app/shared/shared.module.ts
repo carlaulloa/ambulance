@@ -20,6 +20,8 @@ import { UploadDirective } from './directives/upload.directive';
 import { WebcamModule } from 'ngx-webcam';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { RolesAllowedDirective } from './directives/roles-allowed.directive';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
 
@@ -29,7 +31,7 @@ Si no voy a usar el modulo solo debo agregarlo al exports
 para que pueda ser usado por otros
 */
 @NgModule({
-  declarations: [TitleComponent, ContainerListComponent, TableComponent, PhotoComponent, UploadDirective],
+  declarations: [TitleComponent, ContainerListComponent, TableComponent, PhotoComponent, UploadDirective, RolesAllowedDirective, ConfirmComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -58,7 +60,8 @@ para que pueda ser usado por otros
     MatInputModule,
     ReactiveFormsModule,
     PhotoComponent,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RolesAllowedDirective
   ]
 })
 export class SharedModule { }

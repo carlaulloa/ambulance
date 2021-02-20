@@ -1,11 +1,12 @@
 import { Observable } from "rxjs";
 import { MedicEntity } from "../domain/medic.entity";
+import { MedicRequest } from "./medic-request";
 
 export abstract class MedicOperationRepository {
-  abstract insert(medic: MedicEntity): Observable<MedicEntity>;
-  abstract update(id: string, medic: MedicEntity): Observable<MedicEntity>;
-  abstract delete(id: string): Observable<MedicEntity>;
+  abstract insert(fd: FormData): Observable<MedicEntity>;
+  abstract update(id: number, fd: FormData): Observable<MedicEntity>;
+  abstract delete(id: number): Observable<MedicEntity>;
   abstract getAll(): Observable<MedicEntity[]>;
-  abstract getOne(id: string): Observable<MedicEntity>;
-  abstract getByPage(page: number): Observable<any>;
+  abstract getOne(id: number): Observable<MedicEntity>;
+  abstract getByPage(page: number):Observable<MedicRequest[] | MedicRequest>
 }

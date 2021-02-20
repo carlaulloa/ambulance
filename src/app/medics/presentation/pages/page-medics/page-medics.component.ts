@@ -4,9 +4,11 @@ import { IMetadataColumn } from 'src/app/shared/interfaces/metadata-column.inter
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { FormMedicComponent } from '../../views/form-medic/form-medic.component';
 import metadataColumn from '../../../mocks/metadata-column.json';
+import mockMedics from '../../../mocks/medics.json';
 import { ConfigService } from 'src/app/config/config.service';
 import { MedicUsecase } from 'src/app/medics/application/medic.usercase';
 import { MatDialogRef } from '@angular/material/dialog';
+import { mapping } from 'src/app/medics/application/medic.dto';
 @Component({
   selector: 'amb-page-medics',
   templateUrl: './page-medics.component.html',
@@ -16,6 +18,7 @@ export class PageMedicsComponent implements OnInit {
   metadataColumns: IMetadataColumn[] = metadataColumn;
   data: MedicEntity[] = [];
   totalRecords: number = 0;
+  currentPage = 0;
   
   constructor(private readonly configService: ConfigService,
     private readonly utilsService: UtilsService,
@@ -42,27 +45,52 @@ export class PageMedicsComponent implements OnInit {
       panelClass: "container-modal", // 
       data: row
     });
+    
     ref.afterClosed().subscribe((response) => {
         if (!response) {
-          return false;
+          return;
         }
-        if (!response.id) {
-          console.log(response)
-          //this.medicUseCase.insert(response).subscribe(res => console.log(res));
+        if (!row) {
+          this.medicUseCase
+            .insert(response)
+            .subscribe(() => this.list(this.currentPage));
         } else {
+          this.medicUseCase
+            .update(row.id, response)
+            .subscribe(() => this.list(this.currentPage));
         }
-      })
-  }
-
-  changePage(pageIndex: number){
-    this.list(pageIndex);
+      })  
   }
 
   list(page: number){
-    /*this.totalRecords = mockMedics.length;
-    this.data = mockMedics.slice(page * 4, page * 4 + 4);*/
-    this.medicUseCase.getByPage(1)
-      .subscribe(data => console.log(data))
+    //this.totalRecords = mockMedics.length;
+    //this.data = mockMedics.slice(page * 4, page * 4 + 4) as MedicEntity[];
+    this.currentPage = page;
+    this.medicUseCase.getByPage(page).subscribe((data: any) => {
+      this.data = data.records as MedicEntity[];
+      //this.data = mockMedics.slice(page * 4, page * 4 + 4) as MedicEntity[];
+      console.log(this.data);
+      this.totalRecords = data.totalRecords;
+    })
+  }
+
+  changePage(page: number) {
+    this.list(page);
+  }
+
+  delete(row: MedicEntity) {
+    this.utilsService
+      .confirm()
+      .afterClosed()
+      .subscribe((response: any) => {
+        if (!response) {
+          return;
+        }
+
+        this.medicUseCase
+          .delete(+row.id)
+          .subscribe(() => this.list(this.currentPage));
+      });
   }
 
 }
