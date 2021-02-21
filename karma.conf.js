@@ -36,9 +36,9 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
+    autoWatch: false, // false por default
     browsers: ['Chrome'],
-    singleRun: false,
+    singleRun: true, // no abrir navegador
     restartOnFileChange: true
   });
 };
