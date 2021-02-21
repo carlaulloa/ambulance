@@ -4,11 +4,11 @@ import { IMetadataColumn } from 'src/app/shared/interfaces/metadata-column.inter
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { FormMedicComponent } from '../../views/form-medic/form-medic.component';
 import metadataColumn from '../../../mocks/metadata-column.json';
-import mockMedics from '../../../mocks/medics.json';
 import { ConfigService } from 'src/app/config/config.service';
 import { MedicUsecase } from 'src/app/medics/application/medic.usercase';
 import { MatDialogRef } from '@angular/material/dialog';
-import { mapping } from 'src/app/medics/application/medic.dto';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ExportComponent } from 'src/app/shared/components/export/export.component';
 @Component({
   selector: 'amb-page-medics',
   templateUrl: './page-medics.component.html',
@@ -22,7 +22,9 @@ export class PageMedicsComponent implements OnInit {
   
   constructor(private readonly configService: ConfigService,
     private readonly utilsService: UtilsService,
-    private readonly medicUseCase: MedicUsecase) { 
+    private readonly medicUseCase: MedicUsecase,
+    private readonly bottomSheet: MatBottomSheet
+    ) { 
     this.configService.config = {
       layout: {
         menu: {
@@ -91,6 +93,12 @@ export class PageMedicsComponent implements OnInit {
           .delete(+row.id)
           .subscribe(() => this.list(this.currentPage));
       });
+  }
+
+  openExport(){
+    this.bottomSheet.open(ExportComponent, {
+      data: this.data
+    });
   }
 
 }

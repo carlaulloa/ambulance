@@ -17,6 +17,8 @@ import { AbstractStorage } from './shared/services/abstract-storage';
 import { StorageService } from './shared/services/storage.service';
 import { TokenInterceptor } from './shared/services/token.interceptor';
 import { AuthenticationGuard } from './shared/guards/authentication.guard';
+import { ExportRepository } from './shared/infraestructure/export.repository';
+import { ExportService } from './shared/services/export.service';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { AuthenticationGuard } from './shared/guards/authentication.guard';
   }, {
     provide: AbstractStorage, useClass: StorageService  
   }, {
+    provide: ExportRepository, useClass: ExportService
+  },{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
