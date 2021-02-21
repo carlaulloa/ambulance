@@ -1,12 +1,16 @@
 <amb-title></amb-title>
 <amb-container-list>
-  <div class="fixed">
+  <div class="fixed" fxLayout fxLayoutGap="5px" fxLayoutAlign="end">
+    <button mat-fab color="accent" (click)="openExport()">
+      <mat-icon>cloud_download</mat-icon>
+    </button>
     <button mat-fab
             color="primary"
             (click)="openForm()"
             *rolesAllowed="['ADMIN']">
       <mat-icon>add</mat-icon>
     </button>
+
   </div>
   <amb-table [metadataColumns]="metadataColumns"
              [data]="data"

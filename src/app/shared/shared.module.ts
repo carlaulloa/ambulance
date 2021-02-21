@@ -22,6 +22,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RolesAllowedDirective } from './directives/roles-allowed.directive';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { ExportComponent } from './components/export/export.component';
+import {MatListModule} from '@angular/material/list';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { ExportUseCase } from './application/export.usecase';
+
 
 
 
@@ -31,7 +36,7 @@ Si no voy a usar el modulo solo debo agregarlo al exports
 para que pueda ser usado por otros
 */
 @NgModule({
-  declarations: [TitleComponent, ContainerListComponent, TableComponent, PhotoComponent, UploadDirective, RolesAllowedDirective, ConfirmComponent],
+  declarations: [TitleComponent, ContainerListComponent, TableComponent, PhotoComponent, UploadDirective, RolesAllowedDirective, ConfirmComponent, ExportComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -42,7 +47,9 @@ para que pueda ser usado por otros
     MatDialogModule,
     WebcamModule,
     MatSlideToggleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule,
+    MatBottomSheetModule
   ],
   exports: [
     MatSidenavModule,
@@ -61,7 +68,13 @@ para que pueda ser usado por otros
     ReactiveFormsModule,
     PhotoComponent,
     MatPaginatorModule,
-    RolesAllowedDirective
+    RolesAllowedDirective,
+    ExportComponent,
+    MatBottomSheetModule,
+    MatListModule,
+  ],
+  providers: [
+    ExportUseCase
   ]
 })
 export class SharedModule { }
