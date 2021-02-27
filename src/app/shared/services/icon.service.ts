@@ -15,7 +15,7 @@ interface IIcon {
 })
 export class IconService {
   private iconsList: IIcon[] = [
-    { name: 'logo', path: "assets/icons/ambulancia.svg" },
+    { name: 'logo', path: "/assets/icons/ambulancia.svg" },
     { name: 'medico', path: '/assets/icons/medico.svg' },
     { name: 'enfermero', path: '/assets/icons/enfermero.svg' },
     { name: 'historia', path: '/assets/icons/historia.svg' },
