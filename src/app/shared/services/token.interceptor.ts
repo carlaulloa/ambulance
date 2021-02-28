@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
+import { hasIn } from "lodash";
 import { Observable, of, throwError } from "rxjs";
 import { catchError, mergeMap, retry } from "rxjs/operators";
 import { AuthService } from "src/app/auth/auth.service";
@@ -13,6 +14,10 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = this.storage.get('access_token');
+
+    if(request.url.match(/assets/)){
+      return next.handle(request);
+    } 
     const requestCloned = request.clone({
       headers: request.headers.append('authorization', `Bearer ${accessToken}`)
     });
