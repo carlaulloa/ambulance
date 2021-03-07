@@ -12,32 +12,29 @@ export class PageDriversComponent implements OnInit {
     field: 'id',
     title: 'ID'
   }, {
-    field: 'name',
-    title: 'Nombre'
-  }, {
-    field: 'lastName',
-    title: 'Apellido'
+    field: 'fullName',
+    title: 'Nombre Completo'
   }, {
     field: 'license',
     title: 'Licencia de Conducir'
   }];
   data: any[] = [
     {
-      id: 1, name: "alterto", lastName: "vega", license: "456225452"
+      id: 1, fullName: "alterto vega", license: "456225452"
     },
     {
-      id: 2, name: "alterto", lastName: "vega", license: "456225452"
+      id: 2, fullName: "alterto vega", license: "456225452"
     },
     {
-      id: 3, name: "alterto", lastName: "vega", license: "456225452"
-    },{
-      id: 4, name: "alterto", lastName: "vega", license: "456225452"
+      id: 3, fullName: "alterto vega", license: "456225452"
+    }, {
+      id: 4, fullName: "alterto vega", license: "456225452"
     },
     {
-      id: 5, name: "alterto", lastName: "vega", license: "456225452"
+      id: 5, fullName: "alterto vega", license: "456225452"
     }
   ];
-  constructor(private readonly configService: ConfigService) { 
+  constructor(private readonly configService: ConfigService) {
     this.configService.config = {
       layout: {
         menu: {

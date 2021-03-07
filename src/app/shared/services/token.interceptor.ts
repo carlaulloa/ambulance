@@ -16,6 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const accessToken = this.storage.get('access_token');
 
     if(request.url.match(/assets/)){
+      request = request.clone({ headers: request.headers.delete('Authorization') });
       return next.handle(request);
     } 
     const requestCloned = request.clone({

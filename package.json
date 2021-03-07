@@ -2,10 +2,11 @@
   "name": "ambulance",
   "version": "0.0.0",
   "scripts": {
-    "start:mem": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --open",
+    "start:mem": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --open --proxy-config proxy.conf.json",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:bh": "ng build --base-href /ambulance/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,11 +24,13 @@
     "@angular/platform-browser": "~11.0.5",
     "@angular/platform-browser-dynamic": "~11.0.5",
     "@angular/router": "~11.0.5",
+    "@swimlane/ngx-charts": "^16.0.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.20",
     "ngx-webcam": "^0.3.2",
     "pdfmake": "^0.1.68",
     "rxjs": "~6.6.0",
+    "socket.io-client": "^2.3.0",
     "tslib": "^2.0.0",
     "xlsx": "^0.16.9",
     "zone.js": "~0.10.2"

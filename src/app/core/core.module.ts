@@ -6,7 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MenuComponent } from './presentation/views/menu/menu.component';
 import {MatListModule} from '@angular/material/list';
 import { PageLoginComponent } from './presentation/pages/page-login/page-login.component';
@@ -24,7 +23,6 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     MatButtonModule,
     MatToolbarModule,
-    MatSidenavModule,
     MatIconModule,
     MatMenuModule,
     FlexLayoutModule,
@@ -38,8 +36,7 @@ import { MatInputModule } from '@angular/material/input';
   exports: [
     HeaderComponent,
     MenuComponent,
-    PageLoginComponent,
-    RouterModule
+    PageLoginComponent
   ]
 })
 export class CoreModule { }

@@ -7,6 +7,10 @@ mat-card {
 
 .container-list {
   padding: 20px 0;
-  height: calc(100vh - 144px);
+  height: auto;
   background-color: whitesmoke;
+}
+
+.custom-card {
+  padding-bottom: 50px;
 }

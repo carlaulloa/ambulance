@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["lodash", "xlsx"],
+            "allowedCommonJsDependencies": ["lodash", "xlsx", "socket.io-client"],
             "outputPath": "dist/ambulance",
             "index": "src/index.html",
             "main": "src/main.ts",
