@@ -39,6 +39,7 @@ export class ExportService extends ExportRepository {
 
   getInformation(content: any[], title: string): any {
     const dataFormatted = {
+      pageOrientation: 'landscape',
       content: [
         {
           text: title,
@@ -51,7 +52,7 @@ export class ExportService extends ExportRepository {
       styles: {
         // para referenciarlo luego
         header: {
-          fontSize: 16,
+          fontSize: 14,
           bold: true,
           margin: [0, 0, 0, 10],
           decoration: 'underline'

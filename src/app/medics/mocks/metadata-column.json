@@ -6,6 +6,9 @@
   "title": "Nombre"
 }, {
   "field": "lastname",
+  "title": "Segundo Nombre"
+}, {
+  "field": "surname",
   "title": "Apellido"
 }, {
   "field": "cmp",

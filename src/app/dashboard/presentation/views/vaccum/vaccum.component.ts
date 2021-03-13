@@ -30,15 +30,15 @@ export class VaccumComponent implements OnInit {
 
 
   constructor(
-    private readonly socketService: SocketRepository
+   // private readonly socketService: SocketRepository // connection
   ) { }
 
   ngOnInit(): void {
-    this.socketService.listen('dataupdate')
+    /*this.socketService.listen('dataupdate')
       .subscribe(results => {
         console.log(results);
        // this.results = results;
-      })
+      })*/
   }
 
 }

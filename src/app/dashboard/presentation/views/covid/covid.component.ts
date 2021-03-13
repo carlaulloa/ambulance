@@ -30,7 +30,7 @@ export class CovidComponent implements OnInit {
 
   legend = true;
   legendPosition = 'right';
-  legendTitle = 'Meses';
+  legendTitle = 'Países';
 
   constructor(private readonly covidUseCase: CovidUseCase) {}
 

@@ -29,14 +29,14 @@ export class PhotoComponent implements OnInit, ControlValueAccessor, AfterViewIn
   triggerSnapshot: Subject<void> = new Subject<void>();
 
   onChange = (_: any) => { }
-  onTouch = (_: any) => { }
+  onTouch = () => { }
 
   constructor() { }
 
   ngAfterViewInit(): void {
     if(this.photoByDefault){
      // const pathPhoto = "/assets/img/" + this.photoByDefault;
-      const pathPhoto = `${environment.pathAPI}/photos/${this.photoByDefault}`;
+      const pathPhoto = `${environment.pathAPI}/photos/` + encodeURIComponent(this.photoByDefault);
       this.loadPhoto(pathPhoto);
     }
   }
@@ -75,7 +75,7 @@ export class PhotoComponent implements OnInit, ControlValueAccessor, AfterViewIn
   loadInDiv(file: File) {
     this.value = file;
     this.onChange(this.value);
-    this.onTouch(this.value);
+    this.onTouch();
     const fr: FileReader = new FileReader();
     fr.onloadend = (response: any) => {
       const dataBase64 = response.target.result;
@@ -98,8 +98,12 @@ export class PhotoComponent implements OnInit, ControlValueAccessor, AfterViewIn
 
   srcToFile(src: string){
     return fetch(src)
-      .then((res) => res.arrayBuffer())
-      .then(buffer => new File([buffer], "avatar", { type: "image/jpg"}))
+      .then((res) => {
+        return res.arrayBuffer();
+      })
+      .then(buffer => {
+        return new File([buffer], "avatar", { type: "image/jpg"})
+      })
   }
 
   changeOriginPhoto(){
