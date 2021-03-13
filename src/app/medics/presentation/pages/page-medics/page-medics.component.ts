@@ -71,7 +71,6 @@ export class PageMedicsComponent implements OnInit {
     this.medicUseCase.getByPage(page).subscribe((data: any) => {
       this.data = data.records as MedicEntity[];
       //this.data = mockMedics.slice(page * 4, page * 4 + 4) as MedicEntity[];
-      console.log(this.data);
       this.totalRecords = data.totalRecords;
     })
   }
@@ -88,7 +87,6 @@ export class PageMedicsComponent implements OnInit {
         if (!response) {
           return;
         }
-
         this.medicUseCase
           .delete(+row.id)
           .subscribe(() => this.list(this.currentPage));
