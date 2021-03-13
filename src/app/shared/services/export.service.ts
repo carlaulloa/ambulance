@@ -44,9 +44,9 @@ export class ExportService extends ExportRepository {
         {
           text: title,
           bold: true,
-          fontSize: 20,
+          fontSize: 15,
           alignment: 'center',
-          margin: [0, 0, 0, 20]
+          margin: [0, 0, 0, 10]
         }
       ],
       styles: {
