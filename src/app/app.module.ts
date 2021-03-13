@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import { TokenInterceptor } from './shared/services/token.interceptor';
 import { AuthenticationGuard } from './shared/guards/authentication.guard';
 import { ExportRepository } from './shared/infraestructure/export.repository';
 import { ExportService } from './shared/services/export.service';
+import { MyErrorHandler } from './shared/services/error.handler.service';
 
 
 @NgModule({
@@ -44,6 +45,8 @@ import { ExportService } from './shared/services/export.service';
     provide: ExportRepository, useClass: ExportService
   },{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+  },{
+    provide: ErrorHandler, useClass: MyErrorHandler
   }],
   bootstrap: [AppComponent]
 })

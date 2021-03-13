@@ -18,9 +18,9 @@ export class ExportComponent implements OnInit {
   export(event: MouseEvent, option: string, action: string = ""): void {
     event.preventDefault();
     if(option === 'excel'){
-      this.exportUsecase.exportToExcel(this.data, "Medicos", "Listado de Medicos");
+      this.exportUsecase.exportToExcel(this.data, "Resultado", "Listado");
     } else if(option == 'pdf'){
-      this.exportUsecase.exportToPDF(this.data, 'Medicos', 'Medicos', action  );
+      this.exportUsecase.exportToPDF(this.data, 'Resultado', 'Resultado', action  );
     }
   }
 

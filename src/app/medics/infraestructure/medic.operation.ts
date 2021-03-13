@@ -18,7 +18,7 @@ export class MedicOperation extends MedicOperationRepository {
     return this.http.post<MedicEntity>(`${environment.pathAPI}/medics/`, fd);
   }
   update(id: number, fd: FormData): Observable<MedicEntity> {
-    return this.http.put<MedicEntity>(`${environment.pathAPI}/medcis/${id}`, fd);
+    return this.http.put<MedicEntity>(`${environment.pathAPI}/medics/${id}`, fd);
   }
   delete(id: number): Observable<MedicEntity> {
     return this.http.delete<MedicEntity>(`${environment.pathAPI}/medics/${id}`);

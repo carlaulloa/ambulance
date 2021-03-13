@@ -3,5 +3,6 @@ export interface UserEntity {
   nombre: string,
   correo: string,
   contrasena: string,
+  activo: boolean
   roles: any[]
 }

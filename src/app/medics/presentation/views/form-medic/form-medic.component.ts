@@ -51,10 +51,6 @@ export class FormMedicComponent implements OnInit {
       email: new FormControl(this.data ? this.data.email : null, [
         Validators.required,
         CustomValidators.validatorEmail,
-        /*Validators.pattern(
-          /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/
-        ),*/
-        //Validators.email,
       ]),
       lastname: new FormControl(this.data ? this.data.lastname : null),
       dni: new FormControl(this.data ? this.data.dni : null, Validators.required),
@@ -64,36 +60,42 @@ export class FormMedicComponent implements OnInit {
     if(this.data){
       const url = `${environment.pathAPI}/photos/${this.data.photo}`;
       const fileName = this.data.photo;
-
       fetch(url)
         .then(async (response) => {
-          const contentType = response.headers.get('Content-type');
           const blob = await response.blob();
           const file = new File([blob], fileName)
-          console.log(file)
           this.group.patchValue({ photo: file });
         })
-
         this.group.addControl('photo', new FormControl(null));
         this.photoToShow = this.data.photo;
-
     } else {
-      this.group.addControl('photo', new FormControl(null/*,  Validators.required*/));
+      const url = `${environment.pathAPI}/photos/${this.photoToShow}`;
+      const fileName = this.photoToShow;
+      fetch(url)
+        .then(async (response) => {
+          const blob = await response.blob();
+          const file = new File([blob], fileName)
+          this.group.patchValue({ photo: file });
+        })
+      this.group.addControl('photo', new FormControl(null, /*,  Validators.required*/));
     }
   }
 
   save(){
-    console.log(this.group)
     if(this.group.valid){
       const medic = this.group.getRawValue();
       const fd: FormData = new FormData();
-      for(const key in medic){
-        fd.append(key, medic[key]);
-      }
+      fd.append('nombre', medic.name);
+      fd.append('segundo_nombre', medic.lastname);
+      fd.append('apellido', medic.surname);
+      fd.append('cmp', medic.cmp);
+      fd.append('dni', medic.dni);
+      fd.append('correo', medic.email);
+      fd.append('foto', medic.photo);
       console.log(fd);
       this.reference.close(fd);
     }else {
-      console.log("formulario no valido")
+      console.log("formulario no válido")
     }
   }
 

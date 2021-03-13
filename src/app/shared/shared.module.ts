@@ -26,7 +26,7 @@ import { ExportComponent } from './components/export/export.component';
 import {MatListModule} from '@angular/material/list';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { ExportUseCase } from './application/export.usecase';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -38,40 +38,46 @@ para que pueda ser usado por otros
 @NgModule({
   declarations: [TitleComponent, ContainerListComponent, TableComponent, PhotoComponent, UploadDirective, RolesAllowedDirective, ConfirmComponent, ExportComponent],
   imports: [
+    MatButtonModule,
     CommonModule,
-    MatIconModule,
     MatToolbarModule,
+    MatIconModule,
     MatCardModule,
     FlexLayoutModule,
     MatTableModule,
     MatDialogModule,
-    WebcamModule,
     MatSlideToggleModule,
     MatPaginatorModule,
+    WebcamModule,
+    MatBottomSheetModule,
     MatListModule,
-    MatBottomSheetModule
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
+    MatToolbarModule,
     TitleComponent,
     ContainerListComponent,
     TableComponent,
     MatTableModule,
     MatTooltipModule,
     MatDialogModule,
-    MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    PhotoComponent,
     MatPaginatorModule,
+    PhotoComponent,
     RolesAllowedDirective,
     ExportComponent,
     MatBottomSheetModule,
     MatListModule,
+    MatSlideToggleModule
   ],
   providers: [
     ExportUseCase

@@ -39,19 +39,20 @@ export class ExportService extends ExportRepository {
 
   getInformation(content: any[], title: string): any {
     const dataFormatted = {
+      pageOrientation: 'landscape',
       content: [
         {
           text: title,
           bold: true,
-          fontSize: 20,
+          fontSize: 15,
           alignment: 'center',
-          margin: [0, 0, 0, 20]
+          margin: [0, 0, 0, 10]
         }
       ],
       styles: {
         // para referenciarlo luego
         header: {
-          fontSize: 16,
+          fontSize: 14,
           bold: true,
           margin: [0, 0, 0, 10],
           decoration: 'underline'
